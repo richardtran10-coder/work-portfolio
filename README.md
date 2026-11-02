@@ -24,38 +24,6 @@ His research background is in bias mitigation for clinical NLP at **Virginia Tec
 | Education | Penn State and Virginia Tech degrees |
 | Certifications & training | Cloud ML credentials, generative AI and consulting programs |
 
-## Tech notes
-
-- One file, `index.html`: HTML, CSS and JavaScript are inline. No framework, no dependencies to install.
-- Typography loads from Google Fonts (Sora, IBM Plex Sans, IBM Plex Mono) and falls back to system fonts if offline.
-- Follows the visitor's light or dark system theme automatically.
-- Responsive layout: sticky identity rail beside the content on desktop, single column on phones. Includes a print stylesheet.
-
-## Deploy to GitHub Pages
-
-1. Create a repository, for example `portfolio`, or `<username>.github.io` for a user site served at the root domain.
-2. Add `index.html` and this `README.md` to the repository root, commit and push to `main`.
-3. In the repository go to **Settings → Pages**. Under **Build and deployment**, set **Source** to *Deploy from a branch*, choose `main` and `/ (root)`, then save.
-4. GitHub builds the site within a minute or two. It is served at `https://<username>.github.io/<repository>/` (or `https://<username>.github.io/` for a user site).
-5. Optional: add a custom domain under the same Pages settings; GitHub creates the `CNAME` file for you.
-
-## Run locally
-
-Open `index.html` directly in a browser, or serve the folder:
-
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
-
-## Updating content
-
-All content lives in `index.html`. Each section has an id you can jump to in the editor: `#profile`, `#competencies`, `#domains`, `#experience`, `#education`, `#certifications`.
-
-- To add a role, copy an existing `<li class="job">` block in the Experience section and edit the dates, employer, title and bullets.
-- To add a certification, copy one `<li>` in the Certifications list and change the badge text, name and issuer.
-- Contact details appear twice: in the side rail near the top and in the footer.
-
 ## Contact
 
 - Email: richard.tran.csphd@outlook.com
