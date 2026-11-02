@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Richard Tran Portfolio</title>
+<meta name="description" content="Professional portfolio of Richard Tran, AI / Machine Learning Engineer: core competencies, domain alignment, experience, education and certifications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: a sticky identity rail on the left, a scrolling dossier on the right; one column at phone width. */
+  --bg:#f3f6f7;
+  --surface:#ffffff;
+  --surface-2:#e8eef0;
+  --ink:#0f1e23;
+  --text:#22343a;
+  --muted:#5d6f76;
+  --line:#d3dde1;
+  --accent:#0f766e;
+  --accent-deep:#0a5a54;
+  --accent-soft:#d9f0ec;
+  --amber:#92400e;
+  --amber-soft:#fbefd0;
+  --plum:#7e22ce;
+  --plum-soft:#efe3fb;
+  --font-display:"Sora","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1417;
+    --surface:#111d21;
+    --surface-2:#172a30;
+    --ink:#eef4f5;
+    --text:#d6e0e3;
+    --muted:#93a6ad;
+    --line:#24373d;
+    --accent:#4fd1c5;
+    --accent-deep:#9deee5;
+    --accent-soft:#12403c;
+    --amber:#f5c451;
+    --amber-soft:#3b2e10;
+    --plum:#c9a9f7;
+    --plum-soft:#2e1d47;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1417;
+  --surface:#111d21;
+  --surface-2:#172a30;
+  --ink:#eef4f5;
+  --text:#d6e0e3;
+  --muted:#93a6ad;
+  --line:#24373d;
+  --accent:#4fd1c5;
+  --accent-deep:#9deee5;
+  --accent-soft:#12403c;
+  --amber:#f5c451;
+  --amber-soft:#3b2e10;
+  --plum:#c9a9f7;
+  --plum-soft:#2e1d47;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:currentColor}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);margin:0;text-wrap:balance;line-height:1.2}
+p{margin:0}
+ul,ol{margin:0;padding:0}
+.k{font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+
+.page{
+  max-width:1200px;
+  margin:0 auto;
+  padding:28px 20px 72px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:36px;
+}
+@media (min-width: 960px){
+  .page{grid-template-columns:292px minmax(0,1fr);gap:64px;padding:56px 36px 112px}
+}
+
+/* ---------- Identity rail ---------- */
+.rail{display:flex;flex-direction:column;gap:18px}
+@media (min-width: 960px){
+  .rail{position:sticky;top:40px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding-right:4px}
+}
+.mark{
+  width:52px;height:52px;border-radius:10px;
+  background:var(--accent);color:#fff;
+  font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:.02em;
+  display:grid;place-items:center;
+}
+.name{font-size:30px;font-weight:700;letter-spacing:-.01em}
+.role{font-size:17px;font-weight:500;color:var(--ink);margin-top:6px}
+.status{display:flex;align-items:flex-start;gap:9px;color:var(--muted);font-size:14px;margin-top:12px;line-height:1.45}
+.status .dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-top:6px}
+
+.contact{list-style:none;display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
+.contact li{display:flex;flex-direction:column;gap:2px;font-size:15px}
+.contact a{word-break:break-all}
+.contact .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.copy{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;
+  padding:3px 8px;border-radius:999px;border:1px solid var(--line);
+  background:var(--surface);color:var(--muted);cursor:pointer;
+}
+.copy:hover{color:var(--ink);border-color:var(--muted)}
+
+.toc{display:flex;flex-wrap:wrap;gap:6px 18px;padding-top:18px;border-top:1px solid var(--line)}
+.toc a{
+  color:var(--text);font-size:15px;padding:4px 0 4px 12px;border-bottom:none;
+  border-left:2px solid var(--line);
+}
+.toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+@media (min-width: 960px){
+  .toc{flex-direction:column;flex-wrap:nowrap;gap:4px}
+  .toc a{padding:6px 0 6px 14px}
+}
+
+/* ---------- Dossier ---------- */
+.dossier{display:flex;flex-direction:column;gap:64px;min-width:0}
+.intro{display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.headline{font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.015em;max-width:22ch}
+.lede{font-size:18px;line-height:1.6;max-width:62ch;color:var(--text)}
+.facts{
+  display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px;
+}
+@media (min-width: 560px){.facts{grid-template-columns:repeat(2,1fr)}}
+@media (min-width: 900px){.facts{grid-template-columns:repeat(4,1fr)}}
+.facts > div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.facts dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-size:15px;line-height:1.45;color:var(--ink)}
+
+.section{display:flex;flex-direction:column;gap:22px;scroll-margin-top:24px}
+.section-head{display:flex;flex-direction:column;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.section-head h3{font-size:24px;font-weight:600;letter-spacing:-.01em}
+.section-sub{color:var(--muted);font-size:15px}
+.prose{max-width:66ch;line-height:1.6}
+
+/* Competencies */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{
+  list-style:none;font-family:var(--font-mono);font-size:13px;
+  padding:5px 11px;border-radius:999px;background:var(--surface-2);color:var(--ink);
+}
+.grid-2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width: 680px){.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.comp{
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;
+}
+.comp h4{font-size:17px;font-weight:600}
+.comp p{font-size:15px;line-height:1.55;color:var(--text)}
+.comp .where{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:auto;padding-top:6px}
+
+/* Domain alignment */
+.tally{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;
+}
+@media (min-width: 620px){.tally{grid-template-columns:repeat(4,1fr)}}
+.tally > div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.tally strong{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.tally span{font-size:13px;color:var(--muted)}
+.tally .t-direct strong{color:var(--accent)}
+.tally .t-adj strong{color:var(--amber)}
+.tally .t-ind strong{color:var(--plum)}
+
+.domain{
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  padding:20px 22px;display:flex;flex-direction:column;gap:14px;
+  border-left-width:5px;
+}
+.domain.direct{border-left-color:var(--accent)}
+.domain.adjacent{border-left-color:var(--amber)}
+.domain.independent{border-left-color:var(--plum)}
+.toolset{display:flex;flex-wrap:wrap;gap:8px}
+.toolset li{list-style:none;font-family:var(--font-mono);font-size:13px;padding:5px 11px;border-radius:999px;background:var(--plum-soft);color:var(--plum)}
+.worktypes{list-style:none;display:grid;grid-template-columns:1fr;gap:10px 18px}
+@media (min-width: 620px){.worktypes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.worktypes li{display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.45;padding-left:12px;border-left:2px solid var(--plum-soft)}
+.worktypes li strong{font-weight:600;color:var(--ink)}
+.worktypes li span{font-size:13px;color:var(--muted)}
+.ind-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.ind-list li{display:flex;flex-direction:column;gap:3px;padding:12px 14px;background:var(--surface-2);border-radius:8px}
+.ind-list li strong{font-weight:600;color:var(--ink);font-size:15px}
+.ind-list li small{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.domain-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.domain-head h4{font-size:19px;font-weight:600}
+.domain .tools{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;
+  font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.01em;white-space:nowrap;
+}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.chip-direct{background:var(--accent-soft);color:var(--accent-deep)}
+.chip-adj{background:var(--amber-soft);color:var(--amber)}
+.chip-ind{background:var(--plum-soft);color:var(--plum)}
+.evidence{list-style:none;display:flex;flex-direction:column;gap:8px}
+.evidence li{position:relative;padding-left:18px;font-size:15px;line-height:1.55}
+.evidence li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:2px;background:var(--muted)}
+.evidence .src{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.note{font-size:14px;color:var(--muted);line-height:1.55;padding-top:10px;border-top:1px dashed var(--line)}
+
+/* Experience */
+.timeline{list-style:none;display:flex;flex-direction:column;gap:0}
+.job{display:grid;grid-template-columns:1fr;gap:10px;padding:22px 0;border-top:1px solid var(--line)}
+.job:first-child{border-top:none;padding-top:4px}
+@media (min-width: 720px){.job{grid-template-columns:168px minmax(0,1fr);gap:24px}}
+.job-meta{display:flex;flex-direction:column;gap:3px}
+.dates{font-family:var(--font-mono);font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.loc{font-size:13px;color:var(--muted)}
+.job-body{display:flex;flex-direction:column;gap:12px}
+.job-body h4{font-size:19px;font-weight:600}
+.roles{display:flex;flex-direction:column;gap:16px}
+.title{font-size:15px;font-weight:600;color:var(--ink);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.title .dates-inline{font-family:var(--font-mono);font-size:12px;font-weight:400;color:var(--muted)}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.bullets li{position:relative;padding-left:16px;font-size:15px;line-height:1.55}
+.bullets li::before{content:"";position:absolute;left:0;top:.66em;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.75}
+
+/* Education */
+.edu{list-style:none;display:flex;flex-direction:column}
+.edu li{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--line)}
+.edu li:first-child{border-top:none;padding-top:4px}
+@media (min-width: 720px){.edu li{grid-template-columns:168px minmax(0,1fr);gap:24px}}
+.edu h4{font-size:17px;font-weight:600}
+.edu .school{font-size:15px;color:var(--text);margin-top:2px}
+
+/* Certifications */
+.certs{list-style:none;display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width: 680px){.certs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.certs li{
+  display:flex;gap:14px;align-items:flex-start;padding:14px 16px;
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
+}
+.certs .badge{
+  flex:none;width:40px;height:40px;border-radius:8px;background:var(--surface-2);color:var(--ink);
+  font-family:var(--font-mono);font-size:11px;font-weight:500;display:grid;place-items:center;letter-spacing:.02em;
+}
+.certs .cert-name{font-weight:600;color:var(--ink);font-size:15px;line-height:1.35}
+.certs .issuer{font-size:13px;color:var(--muted);margin-top:2px}
+
+footer{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;
+  padding-top:22px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--muted);
+}
+footer a{color:var(--accent)}
+
+@media (prefers-reduced-motion: no-preference){
+  a,.copy,.toc a{transition:color .15s ease,border-color .15s ease}
+}
+@media print{
+  .page{grid-template-columns:1fr;gap:24px;padding:0}
+  .rail{position:static;max-height:none}
+  .toc,.copy{display:none}
+  .domain,.comp,.certs li,.facts,.tally{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <aside class="rail">
+    <div class="mark" aria-hidden="true">RT</div>
+    <div>
+      <h1 class="name">Richard Tran</h1>
+      <p class="role">AI / Machine Learning Engineer</p>
+      <p class="status"><span class="dot" aria-hidden="true"></span><span>Doctor of Engineering in Artificial Intelligence, in progress at Penn State University</span></p>
+    </div>
+
+    <ul class="contact">
+      <li><span class="k">Location</span><span>United States</span></li>
+      <li>
+        <span class="k">Email</span>
+        <span class="row">
+          <a href="mailto:richard.tran.csphd@outlook.com">richard.tran.csphd@outlook.com</a>
+          <button class="copy" type="button" data-copy="richard.tran.csphd@outlook.com" aria-label="Copy email address">Copy</button>
+        </span>
+      </li>
+      <li><span class="k">LinkedIn</span><a href="https://linkedin.com/in/richardtran8">linkedin.com/in/richardtran8</a></li>
+    </ul>
+
+    <nav class="toc" aria-label="Sections">
+      <a href="#profile">Profile</a>
+      <a href="#competencies">Core competencies</a>
+      <a href="#domains">Domain alignment</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+    </nav>
+
+  </aside>
+
+  <main class="dossier">
+
+    <header class="intro" id="profile">
+      <p class="eyebrow">Professional portfolio · November 2026</p>
+      <h2 class="headline">Building and deploying machine learning and generative AI systems in production.</h2>
+      <p class="lede">AI/ML engineer with progressive experience across applied engineering, technology consulting and academic research, including roles at Probity Inc., Capital One and Booz Allen Hamilton. Certified for machine learning on all three major cloud platforms, with hands-on depth in generative AI, large language models, deep learning architectures and large-scale data systems. Research background in bias mitigation for clinical NLP models at Virginia Tech, alongside several years of graduate-level teaching, mentoring and grading in computer science. Outside engineering, he keeps an independent creative practice in 2D and 3D art, with commissioned pieces alongside personal work.</p>
+      <dl class="facts">
+        <div><dt>Current role</dt><dd>AI/ML Software Engineer, Probity Inc.</dd></div>
+        <div><dt>Domain of study</dt><dd>Computer Science (B.S., M.Eng.) and Artificial Intelligence (D.Eng., in progress)</dd></div>
+        <div><dt>Certified on</dt><dd>Amazon Web Services, Google Cloud and Microsoft Azure</dd></div>
+        <div><dt>Creative practice</dt><dd>2D &amp; 3D art in GIMP, Inkscape, Krita and Blender; personal and commissioned work</dd></div>
+      </dl>
+    </header>
+
+    <section class="section" id="competencies">
+      <div class="section-head">
+        <h3>Core competencies</h3>
+        <p class="section-sub">What Richard does professionally, drawn from four employers and a research group</p>
+      </div>
+      <ul class="chips" aria-label="Technical skills">
+        <li>Machine Learning</li><li>Deep Learning</li><li>Generative AI &amp; LLMs</li><li>Python</li><li>PySpark</li><li>SQL / BigQuery</li><li>AWS</li><li>Google Cloud</li><li>Microsoft Azure</li><li>Docker</li>
+      </ul>
+      <div class="grid-2">
+        <article class="comp">
+          <h4>Machine learning &amp; deep learning</h4>
+          <p>Designs, builds and deploys ML systems in production engineering and large-scale financial-services environments. Deep learning work spans variational autoencoders, Transformers and deep reinforcement learning agents.</p>
+          <p class="where">Probity · Capital One · Shield AI · Virginia Tech</p>
+        </article>
+        <article class="comp">
+          <h4>Generative AI &amp; large language models</h4>
+          <p>Applies LLM and generative AI expertise to add applied AI capabilities inside existing software systems, backed by Databricks Generative AI Fundamentals and Generative AI with LLMs training.</p>
+          <p class="where">Probity</p>
+        </article>
+        <article class="comp">
+          <h4>Cloud ML engineering</h4>
+          <p>Certified on AWS, Google Cloud and Azure. Applies cloud-based ML engineering practices for model reliability, monitoring and scalability.</p>
+          <p class="where">Capital One · AWS, GCP and Azure certifications</p>
+        </article>
+        <article class="comp">
+          <h4>Data engineering &amp; analysis</h4>
+          <p>Python, PySpark and SQL on Google BigQuery. Built data pipelines for clinical NLP and client analytics, extracted entities from clinical notes into a knowledge graph, and evaluated models for client-facing deliverables.</p>
+          <p class="where">Virginia Tech · Booz Allen Hamilton</p>
+        </article>
+        <article class="comp">
+          <h4>Production delivery &amp; MLOps</h4>
+          <p>Translates model development into reliable, deployable software components; moves models from development to production with cross-functional engineering and data teams; builds Docker-based environments.</p>
+          <p class="where">Probity · Capital One · Shield AI</p>
+        </article>
+        <article class="comp">
+          <h4>Research, teaching &amp; mentoring</h4>
+          <p>Researched bias mitigation in clinical NLP (ClinicalBERT, MIMIC-III/IV). Mentored junior consultants, and held three teaching-assistant roles covering Python, Java, computer organization and computing ethics.</p>
+          <p class="where">Virginia Tech · Booz Allen Hamilton</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="domains">
+      <div class="section-head">
+        <h3>Domain alignment</h3>
+        <p class="section-sub">How a Computer Science and AI background maps to twelve specialized technical domains</p>
+      </div>
+      <p class="prose">Richard trained in Computer Science (B.S. and M.Eng., Virginia Tech) and is now completing a Doctor of Engineering in Artificial Intelligence at Penn State. His core discipline, machine learning engineering, is not itself one of the twelve specialized-software domains assessed. Measured against that list, one domain is a direct professional match, four are areas of independent experience outside his engineering roles, led by 2D &amp; 3D art, and two are adjacent to work he has done.</p>
+
+      <div class="tally" aria-label="Summary of domain alignment">
+        <div><strong>12</strong><span>domains assessed</span></div>
+        <div class="t-direct"><strong>1</strong><span>direct professional match</span></div>
+        <div class="t-ind"><strong>4</strong><span>independent experience</span></div>
+        <div class="t-adj"><strong>2</strong><span>adjacent experience</span></div>
+      </div>
+
+      <article class="domain direct">
+        <div class="domain-head">
+          <div>
+            <h4>Office &amp; data analysis</h4>
+            <p class="tools">Category examples: LibreOffice, EViews, Stata</p>
+          </div>
+          <span class="chip chip-direct">Direct professional experience</span>
+        </div>
+        <ul class="evidence">
+          <li>Wrote SQL on Google BigQuery to analyze healthcare statistics across the MIMIC-III and MIMIC-IV clinical datasets. <span class="src">Virginia Tech</span></li>
+          <li>Built PySpark pipelines with Spark NLP Healthcare to annotate clinical notes and extract entities into a knowledge graph. <span class="src">Virginia Tech</span></li>
+          <li>Ran demographic performance evaluation, tokenization analysis and predictive-masking studies to quantify bias in ClinicalBERT. <span class="src">Virginia Tech</span></li>
+          <li>Supported data pipeline development and model evaluation for client-facing analytics deliverables. <span class="src">Booz Allen Hamilton</span></li>
+        </ul>
+        <p class="note">Richard's analysis stack is Python, PySpark and SQL rather than Stata or EViews. The function is the same: statistical analysis of large datasets, reproducible pipelines and evaluation reporting for stakeholders.</p>
+      </article>
+
+      <article class="domain independent">
+        <div class="domain-head">
+          <div>
+            <h4>2D &amp; 3D art</h4>
+            <p class="tools">Category examples: GIMP, Inkscape, Krita, LibreSprite</p>
+          </div>
+          <span class="chip chip-ind">Independent, personal and commissioned</span>
+        </div>
+        <ul class="toolset" aria-label="Richard's art tools">
+          <li>GIMP</li><li>Inkscape</li><li>Krita</li><li>Blender</li>
+        </ul>
+        <ul class="worktypes">
+          <li><strong>Digital illustration &amp; painting</strong><span>Krita, GIMP</span></li>
+          <li><strong>Vector graphics, logos &amp; icons</strong><span>Inkscape</span></li>
+          <li><strong>3D modeling, texturing &amp; rendering</strong><span>Blender</span></li>
+          <li><strong>Pixel art &amp; game sprites</strong><span>2D asset work for games</span></li>
+        </ul>
+        <p class="note">An independent creative practice maintained alongside his engineering career, combining self-directed pieces with commissioned work for clients. Three of the four tools he uses are the category's own examples.</p>
+      </article>
+
+      <article class="domain independent">
+        <div class="domain-head">
+          <div>
+            <h4>Game development, video and audio production</h4>
+            <p class="tools">Three further areas of hands-on work outside his profession</p>
+          </div>
+          <span class="chip chip-ind">Independent experience</span>
+        </div>
+        <ul class="ind-list">
+          <li><strong>Game development</strong><small>Category examples: Godot, Defold, Solar 2D, Panda 3D</small></li>
+          <li><strong>Video production</strong><small>Category examples: OpenShot, Shotcut, Lightworks, Kdenlive</small></li>
+          <li><strong>Audio production</strong><small>Category examples: Audacity, Ardour, LMMS, REAPER</small></li>
+        </ul>
+        <p class="note">Self-directed work outside his engineering roles, alongside the 2D &amp; 3D art practice above.</p>
+      </article>
+
+      <article class="domain adjacent">
+        <div class="domain-head">
+          <div>
+            <h4>Physics engines</h4>
+            <p class="tools">Category examples: MuJoCo, Geant4</p>
+          </div>
+          <span class="chip chip-adj">Adjacent experience</span>
+        </div>
+        <ul class="evidence">
+          <li>Built simulation and visualization tooling, including Docker-based simulation environments, for a deep reinforcement learning agent in the Golden Horde competition. <span class="src">Shield AI</span></li>
+          <li>Designed an expert system as the performance baseline for the agent and integrated a Transformer model into the deep RL architecture. <span class="src">Shield AI</span></li>
+          <li>Engineered agent features from latitude and longitude observations and wrote the dependency-installation scripts for the simulation stack. <span class="src">Shield AI</span></li>
+        </ul>
+        <p class="note">The overlap is simulation environments for training RL agents. Richard's record does not list MuJoCo or Geant4 specifically.</p>
+      </article>
+
+      <article class="domain adjacent">
+        <div class="domain-head">
+          <div>
+            <h4>Electronics design</h4>
+            <p class="tools">Category examples: KiCad, LibrePCB, DesignSpark PCB, Ngspice</p>
+          </div>
+          <span class="chip chip-adj">Adjacent, academic</span>
+        </div>
+        <ul class="evidence">
+          <li>Graduate teaching assistant for CS 2506 Computer Organization II, covering RISC architecture, digital logic, arithmetic/logic units and the memory hierarchy. <span class="src">Virginia Tech</span></li>
+          <li>Held 20+ office hours weekly and graded 270+ assignments for the course. <span class="src">Virginia Tech</span></li>
+        </ul>
+        <p class="note">The overlap is digital-logic and computer-architecture foundations taught at the university level, not PCB layout or circuit simulation.</p>
+      </article>
+
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head">
+        <h3>Experience</h3>
+        <p class="section-sub">Applied engineering, consulting, research and teaching, most recent first</p>
+      </div>
+      <ol class="timeline">
+        <li class="job">
+          <div class="job-meta"><span class="dates">Feb 2025 – Present</span><span class="loc">United States</span></div>
+          <div class="job-body">
+            <h4>Probity Inc.</h4>
+            <div class="roles">
+              <div>
+                <p class="title">AI/ML Software Engineer</p>
+                <ul class="bullets">
+                  <li>Designs, builds and deploys machine learning and generative AI software supporting production engineering initiatives.</li>
+                  <li>Applies large language model and generative AI expertise to develop applied AI capabilities within existing software systems.</li>
+                  <li>Collaborates across engineering functions to translate model development into reliable, deployable software components.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="job">
+          <div class="job-meta"><span class="dates">Aug 2024 – Feb 2025</span><span class="loc">McLean, VA</span></div>
+          <div class="job-body">
+            <h4>Capital One</h4>
+            <div class="roles">
+              <div>
+                <p class="title">Associate Machine Learning Engineer</p>
+                <ul class="bullets">
+                  <li>Built and supported machine learning systems within a large-scale financial services environment.</li>
+                  <li>Partnered with cross-functional engineering and data teams to move ML models from development into production.</li>
+                  <li>Applied cloud-based ML engineering practices to support model reliability, monitoring and scalability.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="job">
+          <div class="job-meta"><span class="dates">Aug 2022 – Aug 2024</span><span class="loc">McLean, VA</span></div>
+          <div class="job-body">
+            <h4>Booz Allen Hamilton</h4>
+            <div class="roles">
+              <div>
+                <p class="title">Staff Machine Learning Engineer, Senior Consultant <span class="dates-inline">Nov 2023 – Aug 2024</span></p>
+                <ul class="bullets">
+                  <li>Advanced from Consultant to Senior Consultant within the Technical Excellence – Machine Learning Data Scientist Program.</li>
+                  <li>Led machine learning engineering workstreams for client engagements, translating technical findings into actionable guidance.</li>
+                  <li>Mentored junior consultants on ML engineering practices and technical delivery standards.</li>
+                </ul>
+              </div>
+              <div>
+                <p class="title">Machine Learning Engineer, Consultant <span class="dates-inline">Aug 2022 – Dec 2023</span></p>
+                <ul class="bullets">
+                  <li>Designed and implemented machine learning solutions for government and enterprise client engagements.</li>
+                  <li>Built foundational technical excellence in ML engineering through a formal consulting training program.</li>
+                  <li>Supported data pipeline development and model evaluation for client-facing analytics deliverables.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="job">
+          <div class="job-meta"><span class="dates">Dec 2021 – Jan 2022</span><span class="loc">Alexandria, VA</span></div>
+          <div class="job-body">
+            <h4>Shield AI</h4>
+            <div class="roles">
+              <div>
+                <p class="title">Machine Learning Intern</p>
+                <ul class="bullets">
+                  <li>Designed an expert system to provide a performance baseline for a deep reinforcement learning agent in the Golden Horde competition.</li>
+                  <li>Integrated a Transformer model into the existing deep RL network architecture to improve agent performance, and researched an improved self-attention layer.</li>
+                  <li>Built simulation and visualization tooling: dependency installation scripts, agent feature engineering from latitude/longitude observations, and Docker-based simulation environments.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="job">
+          <div class="job-meta"><span class="dates">Jan 2021 – May 2022</span><span class="loc">Blacksburg, VA</span></div>
+          <div class="job-body">
+            <h4>Virginia Tech, Department of Computer Science</h4>
+            <div class="roles">
+              <div>
+                <p class="title">Machine &amp; Deep Learning Graduate Researcher <span class="dates-inline">May 2021 – Dec 2021</span></p>
+                <ul class="bullets">
+                  <li>Researched a variational autoencoder architecture to mitigate bias in patients' clinical notes for common medical downstream tasks.</li>
+                  <li>Used PySpark and Spark NLP Healthcare to annotate and extract entities from clinical notes, building a knowledge graph.</li>
+                  <li>Analyzed bias in ClinicalBERT through predictive masking, tokenization analysis and demographic performance evaluation.</li>
+                  <li>Built SQL scripts on Google BigQuery to analyze healthcare statistics from the MIMIC-III and MIMIC-IV clinical note datasets.</li>
+                </ul>
+              </div>
+              <div>
+                <p class="title">Graduate Teaching Assistant <span class="dates-inline">Jun 2021 – May 2022</span></p>
+                <ul class="bullets">
+                  <li>CS 2506 Computer Organization II: held 20+ office hours weekly and graded 270+ assignments covering RISC architecture, digital logic, arithmetic/logic units and memory hierarchy.</li>
+                  <li>Directed lab sessions for a joint Software Design &amp; Programming in Java course covering data structures, algorithms, and testing and debugging; sole grader for all assignments, projects and labs in the section.</li>
+                </ul>
+              </div>
+              <div>
+                <p class="title">Undergraduate Teaching Assistant <span class="dates-inline">Jan 2021 – Jun 2021</span></p>
+                <ul class="bullets">
+                  <li>Taught CS 3604 Professionalism in Computing, covering privacy, dark patterns, net neutrality and AI ethics, through weekly office hours and assignments.</li>
+                  <li>Produced solutions and graded programming assignments and projects for 210+ students in CS 1064 Programming in Python, with 10+ weekly office hours.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-head">
+        <h3>Education</h3>
+        <p class="section-sub">Computer Science through to a doctorate in Artificial Intelligence</p>
+      </div>
+      <ul class="edu">
+        <li>
+          <div class="job-meta"><span class="dates">2026 – Present</span></div>
+          <div><h4>Doctor of Engineering, Artificial Intelligence</h4><p class="school">Penn State University</p></div>
+        </li>
+        <li>
+          <div class="job-meta"><span class="dates">2020 – 2022</span></div>
+          <div><h4>Master of Engineering, Computer Science &amp; Applications</h4><p class="school">Virginia Tech College of Engineering</p></div>
+        </li>
+        <li>
+          <div class="job-meta"><span class="dates">2018 – 2021</span></div>
+          <div><h4>Bachelor of Science, Computer Science</h4><p class="school">Virginia Tech College of Engineering</p></div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="certifications">
+      <div class="section-head">
+        <h3>Certifications &amp; training</h3>
+        <p class="section-sub">Machine learning credentials across the three major cloud platforms, plus generative AI and consulting programs</p>
+      </div>
+      <ul class="certs">
+        <li><span class="badge" aria-hidden="true">AWS</span><div><p class="cert-name">AWS Certified Machine Learning – Specialty</p><p class="issuer">Amazon Web Services</p></div></li>
+        <li><span class="badge" aria-hidden="true">GCP</span><div><p class="cert-name">Professional Machine Learning Engineer</p><p class="issuer">Google Cloud</p></div></li>
+        <li><span class="badge" aria-hidden="true">AZ</span><div><p class="cert-name">Azure AI Fundamentals</p><p class="issuer">Microsoft</p></div></li>
+        <li><span class="badge" aria-hidden="true">DBX</span><div><p class="cert-name">Generative AI Fundamentals</p><p class="issuer">Databricks</p></div></li>
+        <li><span class="badge" aria-hidden="true">LLM</span><div><p class="cert-name">Generative AI with Large Language Models</p><p class="issuer">Course certificate</p></div></li>
+        <li><span class="badge" aria-hidden="true">BAH</span><div><p class="cert-name">Technical Excellence – ML Data Scientist Program</p><p class="issuer">Booz Allen Hamilton</p></div></li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>Richard Tran · AI / Machine Learning Engineer · United States</span>
+      <span><a href="mailto:richard.tran.csphd@outlook.com">richard.tran.csphd@outlook.com</a> · <a href="https://linkedin.com/in/richardtran8">LinkedIn</a></span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var buttons=document.querySelectorAll('[data-copy]');
+  Array.prototype.forEach.call(buttons,function(btn){
+    btn.addEventListener('click',function(){
+      var value=btn.getAttribute('data-copy');
+      var reset=function(){setTimeout(function(){btn.textContent='Copy';},1600);};
+      try{
+        navigator.clipboard.writeText(value).then(function(){btn.textContent='Copied';reset();},function(){btn.textContent='Select text to copy';reset();});
+      }catch(e){btn.textContent='Select text to copy';reset();}
+    });
+  });
+})();
+</script>
+</body>
+</html>
